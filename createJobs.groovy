@@ -1,8 +1,14 @@
-pipelineJob('pipelineJob') {
+pipelineJob('app-service-job') {
     definition {
-        cps {
-            script(readFileFromWorkspace('pipelineJob.groovy'))
-            sandbox()
+        cpsScm {
+            scm {
+                git {
+                    remote {
+                        url 'https://github.com/ravisreddy/app.git'
+                    }
+                    branch 'master'
+                }
+            }
         }
     }
 }
